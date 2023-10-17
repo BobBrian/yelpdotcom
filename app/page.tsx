@@ -13,15 +13,26 @@ import {useState, useEffect} from 'react'
 //Dave Grey Video:https://www.youtube.com/watch?v=2NEV_M7NN6k
 //ByteGrad Video:https://www.youtube.com/watch?v=TPACABQTHvM&t=84s
 
+interface Resturant {
+    id:number,
+    authorname:string,
+    resturantname:string,
+    body:string,
+    rating: number
+}
+
 export default function Home() {
 
-  const [resturant,setResturant] = useState([
-    { id:1,authorname:"Bob A",resturantname:"Resturant A",body:"Food is Very Good", rating:5},
-    { id:2,authorname:"Bob B",resturantname:"Resturant B",body:"Food is  Good", rating:4},
-    { id:3,authorname:"Bob C",resturantname:"Resturant C",body:"Food is Average", rating:3},
-    { id:4,authorname:"Bob D",resturantname:"Resturant D",body:"Food is Less than Average", rating:2},
-    { id:1,authorname:"Bob E",resturantname:"Resturant E",body:"Food is Bad", rating:1}
-  ])
+  const [resturant,setResturant] = useState<Resturant[]>([])
+
+  //GET REQUEST
+  //This HHTP Method Works
+  useEffect(() => {
+    fetch("http://localhost:3100/resturant")
+    .then(response => response.json())
+    .then(json => setResturant(json));
+  },[])
+
 
   return (
     <main>
@@ -53,7 +64,7 @@ export default function Home() {
                 <tbody>
                   
                     {resturant.map(rest => (
-                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700" key={rest.id}>
                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {rest.authorname}
                         </th>
