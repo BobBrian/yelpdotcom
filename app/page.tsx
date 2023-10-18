@@ -2,14 +2,12 @@
 import Link from 'next/link'
 import React from 'react'
 import {useState, useEffect} from 'react'
+import { useRouter } from 'next/navigation'
 
 //This is the version of the main code that will be pushed into the master branch
 //The code here uses remenant code from the static project file
 
 //This page is where the listAllResturants and the Link to createReview and reviewDetails Page
-//Stage 1 is the code built with dummy data to populate fields and make it easier to design
-//The Front End
-//VERSION 1:USING DUMMY DATA
 //Dave Grey Video:https://www.youtube.com/watch?v=2NEV_M7NN6k
 //ByteGrad Video:https://www.youtube.com/watch?v=TPACABQTHvM&t=84s
 
@@ -23,6 +21,8 @@ interface Resturant {
 
 export default function Home() {
 
+  const router = useRouter()
+
   const [resturant,setResturant] = useState<Resturant[]>([])
 
   //GET REQUEST
@@ -32,6 +32,11 @@ export default function Home() {
     .then(response => response.json())
     .then(json => setResturant(json));
   },[])
+
+  //GET SPECIFIC DETAILS
+  const LoadDetails = (id:number) => {
+    router.push(`/todos/${id}`)
+  }
 
 
   return (
@@ -75,7 +80,10 @@ export default function Home() {
                             {rest.rating}
                         </td>
                         <td className="px-6 py-4">
-                            <a href="#" className="font-medium text-blue-600  hover:underline">View Details</a>
+                           <a className="mt-2 mb-2 text-center inline-flex items-center px-3 py-2 text-sm font-medium 
+                                text-center text-white bg-blue-700 rounded-lg">
+                                <Link href={`/todos/${rest.id}`}>View Details</Link>
+                            </a>
                         </td>
                       </tr>
                     ))}    

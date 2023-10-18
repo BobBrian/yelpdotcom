@@ -1,3 +1,10 @@
 {
-    "resturant": []
+    "resturant": [],
+    "comments": [
+        { "id":1,"ratingid":1 },
+        { "id":2,"ratingid":2 },
+        { "id":3,"ratingid":3},
+        { "id":4,"ratingid":4},
+        { "id":5,"ratingid":5 }
+    ]
 }
