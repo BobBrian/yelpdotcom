@@ -30,7 +30,7 @@ export default function CreateReview() {
   },[])
 
   //POST REQUEST
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     const rest = {resturantvalues}
 
@@ -38,6 +38,7 @@ export default function CreateReview() {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(rest)
+
     }).then(() =>{
       console.log("A NEW TODO HAS BEEN ADDED")
       router.push('/')
@@ -76,12 +77,6 @@ export default function CreateReview() {
 
       <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 
       focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Create Review</button>
-
-      <a className="mt-2 mb-2 text-center inline-flex items-center px-3 py-2 text-sm font-medium 
-          text-center text-white bg-red-600 rounded-lg">
-          <Link href="/">Back</Link>
-      </a>
-
     </form>
   )
 }
