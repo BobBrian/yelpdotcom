@@ -41,9 +41,11 @@ export default function CreateReview() {
 
     }).then(() =>{
       console.log("A NEW TODO HAS BEEN ADDED")
-      router.push('/')
+      
     })
   }
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
