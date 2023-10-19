@@ -1,5 +1,7 @@
 {
-    "resturant": [],
+    "resturant": [
+        {"id":1,"authorname":"Bryan","resturantname":"KFC","body":"Food Was Good", "rating":4}
+    ],
     "comments": [
         { "id":1,"ratingid":1 },
         { "id":2,"ratingid":2 },

@@ -11,7 +11,6 @@ interface RatingResturant {
 
 export default function CreateReview() {
 
-  //New Method of a React Hook storing all the Form values in One State
   const [resturantvalues, setResturantValues] = useState({
     authorname:'',
     resturantname:'',
@@ -19,20 +18,18 @@ export default function CreateReview() {
     rating:''
   })
 
-  //Second Reacthook to pull the rating id so that it can be asssingned to 
-  //The Table with Resturant Detaisl
   const[ratingid,setRatingid] = useState<RatingResturant[]>([])
 
   const router = useRouter();
 
   //GET REQUEST
-  //Used to Populate the Dropdown List
   useEffect(() => {
     fetch("http://localhost:3100/comments")
     .then(response => response.json())
-    .then(json => setResturantValues(json));
+    .then(json => setRatingid(json));
   },[])
 
+  //POST REQUEST
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const rest = {resturantvalues}

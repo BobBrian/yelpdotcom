@@ -20,7 +20,6 @@ export default function ReviewDetails() {
   const id = params.id
 
   //GET REQUEST
-  //This HHTP Method Works
   useEffect(() => {
     fetch("http://localhost:3100/resturant/"+ id)
     .then(response => response.json())
