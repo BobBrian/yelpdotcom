@@ -1,23 +1,13 @@
 "use client"
 import React from 'react'
 import {useState, useEffect} from 'react'
-
-
-
-interface Resturant {
-    id:number,
-    authorname:string,
-    resturantname:string,
-    body:string
-}
+import Link from 'next/link'
 
 
 
 export default function Home() {
 
   const [resturant,setResturant] = useState<Resturant[]>([])
-
-
   const [authorname,setAuthorname] = useState('')
   const [resturantname,setResturantname] = useState('')
   const [body,setBody] = useState('')
@@ -90,11 +80,11 @@ export default function Home() {
                         </th>
 
                         <th scope="col" className="px-6 py-3">
-                            Review Summary
+                            Review Details
                         </th>
 
                         <th scope="col" className="px-6 py-3">
-                            Action
+                            
                         </th>
                     </tr>
                 </thead>
@@ -110,7 +100,9 @@ export default function Home() {
                         </td>
 
                         <td className="px-6 py-4">
-                            {rest.body}
+                          <Link href={`/review/${rest.id}`} className="text-white bg-blue-700 hover:bg-lime-500 
+                          focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm 
+                          px-5 py-2.5 mr-2 mb-2 ">Details</Link>
                         </td>
 
                         <td className="px-6 py-4">
